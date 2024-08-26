@@ -14,6 +14,23 @@ class Cart(LoggingMixin, DiscountMixin):
         LoggingMixin.__init__(self)
         self.items = {}
 
+    def __len__(self):
+        return len(self.items)
+
+    def __getitem__(self, item):
+        return list(self.items.items())[item]
+
+    def __iadd__(self, other_card):
+        if not isinstance(other_card, Cart):
+            raise TypeError('Need add another Card')
+
+        for product, quantity in other_card.items.items():
+            self.items[product] = self.items.get(product, 0) + quantity
+
+        self.log('Merged another cart in one')
+
+        return self
+
     def add_product(self, product: Product, quantity: int | float):
         if not isinstance(quantity, int | float):
             raise TypeError('Quantity must be a number')

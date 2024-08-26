@@ -13,17 +13,23 @@ def main():
         product1 = Product("Laptop", 1500.00, "A high-end gaming laptop")
         product2 = Product("Mouse", 50.00, "A wireless mouse")
         product3 = Product("Keyboard", 100.00, "A mechanical keyboard")
+
+        product6 = Product("Test product", 1999.00, "Test product for cart 2")
+
         # product4 = Product("Headphones", -10.00, "Noise-cancelling headphones")
         # product5 = Product("Monitor", 0, "4K monitor")
     except (InvalidPriceError, TypeError, ValueError) as e:
         print(e)
 
     cart = Cart()
+    cart2 = Cart()
 
     try:
         cart.add_product(product1, 1)
         cart.add_product(product2, 2)
         cart.add_product(product3, 3)
+
+        cart2.add_product(product6, 1)
         # cart.add_product(product4, -1)
         # cart.add_product(product5, 0)
     except (InvalidQuantityError, TypeError, ValueError) as e:
@@ -58,6 +64,9 @@ def main():
     cart.pay(credit_card_processor)
     cart.pay(paypal_processor)
     cart.pay(bank_transfer_processor)
+
+    cart += cart2
+    print(cart)
 
 
 if __name__ == "__main__":
