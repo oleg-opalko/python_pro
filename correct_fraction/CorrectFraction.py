@@ -5,7 +5,7 @@ class CorrectFraction:
     """
     A class representing a fraction in its simplest form.
     """
-    def __init__(self, numerator, denominator):
+    def __init__(self, numerator: int, denominator: int):
         """
         Initializes a CorrectFraction instance and reduces it to its simplest form.
         :param numerator: The numerator of the fraction.
@@ -16,7 +16,7 @@ class CorrectFraction:
             raise TypeError('Numerator and denominator must be integers')
         if denominator == 0:
             raise ValueError('Denominator cannot be zero')
-        
+
         # calculate greatest Common Divisor
         divisor = gcd(numerator, denominator)
 

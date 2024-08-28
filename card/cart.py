@@ -14,11 +14,15 @@ class Cart(LoggingMixin, DiscountMixin):
         LoggingMixin.__init__(self)
         self.items = {}
 
-    def __len__(self):
-        return len(self.items)
+    # def __len__(self):
+    #     return len(self.items)
 
-    def __getitem__(self, item):
-        return list(self.items.items())[item]
+    # def __getitem__(self, item):
+    #     return list(self.items.items())[item]
+
+    # Task 1
+    def __iter__(self):
+        yield iter(self.items)
 
     def __iadd__(self, other_card):
         if not isinstance(other_card, Cart):

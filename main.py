@@ -1,4 +1,4 @@
-from card.card import Cart
+from card.cart import Cart
 from discounts.discount import PercentageDiscount, FixedAmountDiscount
 from exceptions.invalid_price_error import InvalidPriceError
 from exceptions.invalid_quantity_error import InvalidQuantityError
