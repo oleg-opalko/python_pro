@@ -101,7 +101,7 @@ def my_sum(numbers: List[int], func: Any):
     if not numbers:
         raise ValueError('The list of numbers is empty')
 
-    new_list_numbers = [func(x) for x in numbers]
+    new_list_numbers = (func(x) for x in numbers)
 
     return sum(new_list_numbers)
 
