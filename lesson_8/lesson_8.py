@@ -32,23 +32,16 @@ hello()
 # Task 2
 def save_result(file_name):
     def decorator(func):
-        cache = {}
-
         def wrapper(*args, **kwargs):
-            key = str((args, kwargs.items()))
-
-            if key in cache:
-                return cache[key]
-
             result = func(*args, **kwargs)
-            cache[key] = result
+            try:
+                with open(file_name, 'a') as file:
+                    file.write(f'{result}\n')
+            except Exception as e:
+                logging.error(e)
 
-            with open(file_name, 'a') as file:
-                file.write(f'{result}\n')
             return result
-
         return wrapper
-
     return decorator
 
 
